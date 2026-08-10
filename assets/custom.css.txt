@@ -1,0 +1,12 @@
+body {
+    background-image: url("/a.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    /* 白色半透明蒙版，弱化背景、提升文字可读性 */
+    background-color: rgba(255, 255, 255, 0.86);
+    background-blend-mode: overlay;
+}
+
+乱加的
