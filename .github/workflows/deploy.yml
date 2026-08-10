@@ -1,0 +1,24 @@
+name: Hugo自动部署博客
+on:
+  push:
+    branches: [ main ]
+jobs:
+  build-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: 拉取源码
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: 安装Hugo扩展版
+        uses: peaceiris/actions-hugo@v2
+        with:
+          hugo-version: latest
+          extended: true
+      - name: 编译静态网站
+        run: hugo --minify
+      - name: 发布到GitHub Pages
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./public
